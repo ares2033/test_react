@@ -1,18 +1,21 @@
-import ListGroup from "./Components/ListGroup";
+import Alert from "./components/Alert";
+import Button from "./components/Button";
 
 function App() {
-  let items = ["new york", "london", "test1", "test2"];
+  function onClickButtonText(event: React.MouseEvent<HTMLButtonElement>) {
+    const style = event.currentTarget.getAttribute("data-style");
+    console.log(`qhifsha ropt ${style}`);
+  }
 
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
   return (
     <div>
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
+      <Alert>
+        <Button
+          text="Click me"
+          onClickButton={onClickButtonText}
+          style="primary"
+        />
+      </Alert>
     </div>
   );
 }
