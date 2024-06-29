@@ -1,16 +1,20 @@
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  style: "primary" | "secondary" | "light" | "dark";
+  buttonStyle?: "primary" | "secondary" | "light" | "dark";
   onClickButton: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ text, onClickButton, style }: ButtonProps) => {
+const Button = ({
+  text,
+  onClickButton,
+  buttonStyle = "primary",
+}: ButtonProps) => {
   return (
     <button
       type="button"
-      className={`btn btn-${style}`}
+      className={`btn btn-${buttonStyle}`}
       onClick={onClickButton}
-      data-style={style}
+      data-style={buttonStyle}
     >
       {text}
     </button>
